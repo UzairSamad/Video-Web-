@@ -1,13 +1,12 @@
 import React from 'react'
 
 
-const VideoItem = ({ video }) => {
+const VideoItem = ({ video,selectedVideo }) => {
     return (
-        <div>
+        <div style={{borderBottom:'5px',padding:'8px',cursor:'pointer'}} onClick={()=>selectedVideo(video)} >
             <img src={video.snippet.thumbnails.medium.url} />
             {video.snippet.title}
         </div>
-
     )
 }
 

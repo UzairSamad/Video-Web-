@@ -24,8 +24,8 @@
 //    * https://developers.google.com/explorer-help/guides/code_samples#javascript
 //    */
 
-  
- 
+
+
 
 
 
@@ -40,7 +40,7 @@
 //           q: searchTerm,
 //         }
 //       });
-  
+
 //       setVideos(videos);
 //       setSelectedVideo(videos[0]);
 //     }
@@ -57,10 +57,11 @@
 // export default App;
 
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
-import  SearchBar from "./components/SearchBar";
+import SearchBar from "./components/SearchBar";
 import VideoList from './components/VideoList'
+import VideoDetail from "./components/VideoDetail"
 
 import youtube from "./apis/youtube";
 
@@ -82,6 +83,11 @@ export default () => {
     setSelectedVideo(videos[0]);
   }
 
+  const handleVideoSelect = (video) => {
+    setSelectedVideo(video)
+    console.log(selectedVideo)
+  }
+
   return (
     <Grid style={{ justifyContent: "center" }} container spacing={10}>
       <Grid item xs={11}>
@@ -90,10 +96,11 @@ export default () => {
             <SearchBar onSubmit={handleSubmit} />
           </Grid>
           <Grid item xs={8}>
-            {/* <VideoDetail video={selectedVideo} /> */}
+            {/* <Typography>{selectedVideo} </Typography> */}
+            <VideoDetail video={selectedVideo} />
           </Grid>
           <Grid item xs={4}>
-            <VideoList videos={videos} onVideoSelect={setSelectedVideo} />
+            <VideoList videos={videos} onVideoSelect={handleVideoSelect} />
           </Grid>
         </Grid>
       </Grid>
