@@ -60,12 +60,26 @@ import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 
 import  SearchBar from "./components/SearchBar";
+import VideoList from './components/VideoList'
 
 import youtube from "./apis/youtube";
 
 export default () => {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
+
+  async function handleSubmit(searchTerm) {
+    const { data: { items: videos } } = await youtube.get("search", {
+      params: {
+        part: "snippet",
+        maxResults: 25,
+        key: "AIzaSyDM7nu75sZgnXDnuHoZXKq2ZD2KdzGeqUc",
+        q: searchTerm,
+      }
+    });
+    setVideos(videos);
+    setSelectedVideo(videos[0]);
+  }
 
   return (
     <Grid style={{ justifyContent: "center" }} container spacing={10}>
@@ -78,24 +92,12 @@ export default () => {
             {/* <VideoDetail video={selectedVideo} /> */}
           </Grid>
           <Grid item xs={4}>
-            {/* <VideoList videos={videos} onVideoSelect={setSelectedVideo} /> */}
+            <VideoList videos={videos} onVideoSelect={setSelectedVideo} />
           </Grid>
         </Grid>
       </Grid>
     </Grid>
   );
 
-  async function handleSubmit(searchTerm) {
-    const { data: { items: videos } } = await youtube.get("search", {
-      params: {
-        part: "snippet",
-        maxResults: 25,
-        key: "AIzaSyDM7nu75sZgnXDnuHoZXKq2ZD2KdzGeqUc",
-        q: searchTerm,
-      }
-    });
-console.log(videos)
-    // setVideos(videos);
-    // setSelectedVideo(videos[0]);
-  }
+
 }
