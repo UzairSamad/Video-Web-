@@ -77,6 +77,7 @@ export default () => {
         q: searchTerm,
       }
     });
+    console.log(videos)
     setVideos(videos);
     setSelectedVideo(videos[0]);
   }
