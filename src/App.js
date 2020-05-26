@@ -69,6 +69,7 @@ export default () => {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
+
   async function handleSubmit(searchTerm) {
     const { data: { items: videos } } = await youtube.get("search", {
       params: {
@@ -89,7 +90,7 @@ export default () => {
   }
 
   return (
-    <Grid style={{ justifyContent: "center" }} container spacing={10}>
+    <Grid style={{ justifyContent: "center" }} container >
       <Grid item xs={11}>
         <Grid container spacing={10}>
           <Grid item xs={12}>

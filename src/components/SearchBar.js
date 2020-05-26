@@ -18,10 +18,7 @@ class SearchBar extends Component{
                 <form className='ui form' onSubmit={this.onSubmit}>
                     <div className='feild'>
                         <label>Search Video</label>
-                        <input type='text'  value={this.state.term} onChange={this.onInputChange} />
-                    </div>
-                    <div>
-                        {this.state.term}
+                        <input type='text' placeholder={this.state.term}  onChange={this.onInputChange} />
                     </div>
                 </form>
 
