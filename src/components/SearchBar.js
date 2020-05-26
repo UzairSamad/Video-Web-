@@ -8,10 +8,14 @@ class SearchBar extends Component{
     onInputChange = (e) =>{
         this.setState({term:e.target.value})
     }
+    onSubmit = (e)=>{
+        e.preventDefault()
+       this.props.onSubmit(this.state.term)
+    }
     render(){
         return(
             <div className='search-bar ui segment'>
-                <form className='ui form'>
+                <form className='ui form' onSubmit={this.onSubmit}>
                     <div className='feild'>
                         <label>Search Video</label>
                         <input type='text'  value={this.state.term} onChange={this.onInputChange} />
