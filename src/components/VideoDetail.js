@@ -1,6 +1,9 @@
 import React from 'react'
-import { Typography, Grid } from "@material-ui/core";
+import { Grid, CardHeader } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import { Alert, AlertTitle } from '@material-ui/lab';
 
 
@@ -16,14 +19,15 @@ const useStyles = makeStyles((theme) => ({
 
 const VideoDetail = ({ video, errorMessasge }) => {
     const classes = useStyles();
-    console.log(errorMessasge,'details')
-    if (!video ) {
-        return (<div className={classes.root}>
-            <Alert severity="error">
-                <AlertTitle>Error</AlertTitle>
-         {errorMessasge} <strong>check it out!</strong>
-            </Alert>
-        </div>
+    console.log(errorMessasge, 'details')
+    if (!video) {
+        return (
+            <div className={classes.root}>
+                <Alert severity="error">
+                    <AlertTitle>Error</AlertTitle>
+                    {errorMessasge} <strong>check it out!</strong>
+                </Alert>
+            </div>
         )
     }
     const pusblishTime = video.snippet.publishTime.substr(0, 10)
@@ -34,15 +38,22 @@ const VideoDetail = ({ video, errorMessasge }) => {
             <iframe width="800" height="400" src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <Typography style={{ padding: '5px', fontSize: '25px' }}> {video.snippet.title} </Typography>
             <Grid item style={{ marginBottom: '10px', border: '2px' }}>
-                <Typography> Description: </Typography>
+                <Card  style={{width:'70%'}}>
 
-                <Typography> {video.snippet.description} </Typography>
+                    <CardContent>
+                        <Typography gutterBottom variant="h3" component="h3">
+                            Description:
+                         </Typography>
+                        <Typography> {video.snippet.description} </Typography>
+                    </CardContent>
+                </Card>
+
             </Grid>
             <Grid style={{ marginBottom: '5px' }}>
-                <Typography> Channel: {video.snippet.channelTitle} </Typography>
+                <Typography  variant="h5" component="h4"> Channel: {video.snippet.channelTitle} </Typography>
             </Grid>
             <Grid>
-                <Typography> Published on: {pusblishTime} </Typography>
+                <Typography  variant="h5" component="h4"> Published on: {pusblishTime} </Typography>
             </Grid>
 
         </div>
