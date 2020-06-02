@@ -1,30 +1,64 @@
 import React, { Component } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { Grid } from '@material-ui/core';
+// import IconButton from '@material-ui/core/IconButton';
+// import MenuIcon from '@material-ui/icons/Menu';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        // flexGrow: 5,
+        marginRight: '10%'
+    },
+}));
 
 
-class SearchBar extends Component{ 
-    state={
-        term :'Search here'
+const SearchBar = (props) => {
+    const [term, setTerm] = React.useState(null)
+
+    const onInputChange = (e) => {
+        setTerm(e.target.value)
     }
-    onInputChange = (e) =>{
-        this.setState({term:e.target.value})
-    }
-    onSubmit = (e)=>{
+    const onSubmit = (e) => {
         e.preventDefault()
-       this.props.onSubmit(this.state.term)
+        props.onSubmit(term)
     }
-    render(){
-        return(
-            <div className='search-bar ui segment'>
-                <form className='ui form' onSubmit={this.onSubmit}>
-                    <div className='feild'>
-                        <label>Search Video</label>
-                        <input type='text' placeholder={this.state.term}  onChange={this.onInputChange} />
-                    </div>
-                </form>
+    const classes = useStyles();
 
-            </div>
-        )
-    }
+    return (
+
+
+        <div>
+            <AppBar position="fixed">
+                <Toolbar style={{ display: 'flex', alignItems: 'space-around' }}>
+                    <Typography variant="h6" className={classes.title}>
+                        Video App
+              </Typography>
+                    <Grid item sm={4} md={8} >
+                        <form className='ui form' onSubmit={onSubmit}>
+
+                            <input type='text' placeholder='Search here..' onChange={onInputChange} />
+
+                        </form>
+                    </Grid>
+
+                </Toolbar>
+
+
+            </AppBar>
+
+        </div>
+    )
+
 }
 
 export default SearchBar

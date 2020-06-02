@@ -38,15 +38,14 @@ const VideoDetail = ({ video, errorMessasge }) => {
         <div className={classes.root}>
 
             <Grid container  >
-                <Grid item  md={12} sm >
-                    <iframe width='100%' src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+               <Grid item sm={12} md={12}>
+               <iframe width='100%'height='250%' src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <Typography style={{ padding: '5px', fontSize: '25px' }}> {video.snippet.title} </Typography>
-                </Grid>
-
-
+               </Grid>
+                    
+      
                 <Grid item md={12} style={{ marginBottom: '10px', border: '2px' }}>
-                    <Card style={{ width: '100%' }}>
+                    <Card style={{ width: '100%' ,height:'150%' }}>
 
                         <CardContent >
                             <Typography gutterBottom variant="h4" component="h4">

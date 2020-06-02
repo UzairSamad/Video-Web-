@@ -4,13 +4,14 @@ import { Grid, Typography } from "@material-ui/core";
 import SearchBar from "./components/SearchBar";
 import VideoList from './components/VideoList'
 import VideoDetail from "./components/VideoDetail"
+import Navbar from './components/NavBar'
 
 import youtube from "./apis/youtube";
 
 export default () => {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [errorMessage,setErrorMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   // React.useEffect(()=>{
   //   handleSubmit('JavaScript')
@@ -18,7 +19,7 @@ export default () => {
 
 
   async function handleSubmit(searchTerm) {
-    try{
+    try {
       const { data: { items: videos } } = await youtube.get("search", {
         params: {
           part: "snippet",
@@ -30,12 +31,12 @@ export default () => {
       console.log(videos)
       setVideos(videos);
       setSelectedVideo(videos[0]);
-    }catch(error) {
+    } catch (error) {
       let message = error.response.data.error.message.split('.')
       setErrorMessage(message)
       console.log(error.response.data.error.message)
     }
-    
+
 
   }
 
@@ -46,8 +47,12 @@ export default () => {
 
   return (
     <Grid style={{ justifyContent: "center" }} container >
+
       <Grid item xs={11}>
         <Grid container spacing={10}>
+          <Grid item sm={12} md={8}>
+            <Navbar />         
+             </Grid>
           <Grid item xs={12}>
             <SearchBar onSubmit={handleSubmit} />
           </Grid>
