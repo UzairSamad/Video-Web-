@@ -51,10 +51,10 @@ export default () => {
           <Grid item xs={12}>
             <SearchBar onSubmit={handleSubmit} />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item sm={12} md={8}>
             <VideoDetail errorMessasge={errorMessage} video={selectedVideo} />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item sm={12} md={4}>
             <VideoList videos={videos} onVideoSelect={handleVideoSelect} />
           </Grid>
         </Grid>

@@ -10,11 +10,13 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
+        flexGrow: 1,
     },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    }
 }));
 
 const VideoDetail = ({ video, errorMessasge }) => {
@@ -33,30 +35,37 @@ const VideoDetail = ({ video, errorMessasge }) => {
     const pusblishTime = video.snippet.publishTime.substr(0, 10)
 
     return (
+        <div className={classes.root}>
 
-        <div>
-            <iframe width="800" height="400" src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <Typography style={{ padding: '5px', fontSize: '25px' }}> {video.snippet.title} </Typography>
-            <Grid item style={{ marginBottom: '10px', border: '2px' }}>
-                <Card  style={{width:'70%'}}>
+            <Grid container  >
+                <Grid item  md={12} sm >
+                    <iframe width='100%' src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-                    <CardContent>
-                        <Typography gutterBottom variant="h3" component="h3">
-                            Description:
-                         </Typography>
-                        <Typography> {video.snippet.description} </Typography>
-                    </CardContent>
-                </Card>
+                    <Typography style={{ padding: '5px', fontSize: '25px' }}> {video.snippet.title} </Typography>
+                </Grid>
 
+
+                <Grid item md={12} style={{ marginBottom: '10px', border: '2px' }}>
+                    <Card style={{ width: '100%' }}>
+
+                        <CardContent >
+                            <Typography gutterBottom variant="h4" component="h4">
+                                Description:
+                   </Typography>
+                            <Typography> {video.snippet.description} </Typography>
+                        </CardContent>
+                    </Card>
+
+                </Grid>
+                <Grid style={{ marginBottom: '5px' }}>
+                    <Typography variant="h5" component="h4"> Channel: {video.snippet.channelTitle} </Typography>
+                </Grid>
+                <Grid>
+                    <Typography variant="h5" component="h4"> Published on: {pusblishTime} </Typography>
+                </Grid>
             </Grid>
-            <Grid style={{ marginBottom: '5px' }}>
-                <Typography  variant="h5" component="h4"> Channel: {video.snippet.channelTitle} </Typography>
-            </Grid>
-            <Grid>
-                <Typography  variant="h5" component="h4"> Published on: {pusblishTime} </Typography>
-            </Grid>
-
         </div>
+
 
 
 
