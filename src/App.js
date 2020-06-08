@@ -46,9 +46,9 @@ export default () => {
   }
 
   return (
-    <Grid style={{ justifyContent: "center" }} container >
+    <Grid style={{ justifyContent: "center" }} container>
 
-      <Grid item xs={11}>
+      <Grid item xs={11} >
         <Grid container spacing={10}>
           <Grid item sm={12} md={8}>
             <Navbar />         
@@ -56,10 +56,10 @@ export default () => {
           <Grid item xs={12}>
             <SearchBar onSubmit={handleSubmit} />
           </Grid>
-          <Grid item sm={12} md={8}>
+          <Grid item xs={12} sm={12} md={8}  style={{ height: '100px' }}>
             <VideoDetail errorMessasge={errorMessage} video={selectedVideo} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item style={{paddingTop:'20px'}} xs={12} sm={12} md={4}>
             <VideoList videos={videos} onVideoSelect={handleVideoSelect} />
           </Grid>
         </Grid>
