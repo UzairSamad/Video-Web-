@@ -34,8 +34,11 @@ const VideoDetail = ({ video, errorMessasge }) => {
     const pusblishTime = video.snippet.publishTime.substr(0, 10)
 
     return (
+        <div>
+
+    
+        <iframe  style={{ height: '400px',width:'100%' }} src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <Grid style={{ height: '100%' }}>
-            <iframe width='100%' height='100%' src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div style={{ padding: '5px', fontSize: '25px' }}>
                 <Typography style={{ fontSize: '25px' }}> {video.snippet.title} </Typography>
                 <Card style={{ marginBottom: "30px" }} >
@@ -51,11 +54,7 @@ const VideoDetail = ({ video, errorMessasge }) => {
                 </Card>
             </div>
         </Grid>
-
-
-
-
-
+        </div>
     )
 }
 
