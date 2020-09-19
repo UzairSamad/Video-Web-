@@ -45,9 +45,7 @@ const SearchBar = (props) => {
               </Typography>
                     <Grid item sm={4} md={8} >
                         <form className='ui form' onSubmit={onSubmit}>
-
                             <input type='text' placeholder='Search here..' onChange={onInputChange} />
-
                         </form>
                     </Grid>
 

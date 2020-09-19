@@ -23,12 +23,11 @@ export default () => {
       const { data: { items: videos } } = await youtube.get("search", {
         params: {
           part: "snippet",
-          maxResults: 25,
+          maxResults: 15,
           key: "AIzaSyDM7nu75sZgnXDnuHoZXKq2ZD2KdzGeqUc",
           q: searchTerm,
         }
       });
-      console.log(videos)
       setVideos(videos);
       setSelectedVideo(videos[0]);
     } catch (error) {
@@ -57,7 +56,7 @@ export default () => {
             <SearchBar onSubmit={handleSubmit} />
           </Grid>
           <Grid item xs={12} sm={12} md={8}  style={{ height: '100px' }}>
-            <VideoDetail errorMessasge={errorMessage} video={selectedVideo} />
+            <VideoDetail  errorMessasge={errorMessage} video={selectedVideo} />
           </Grid>
           <Grid item style={{paddingTop:'20px'}} xs={12} sm={12} md={4}>
             <VideoList videos={videos} onVideoSelect={handleVideoSelect} />

@@ -20,13 +20,12 @@ const useStyles = makeStyles((theme) => ({
 
 const VideoDetail = ({ video, errorMessasge }) => {
     const classes = useStyles();
-    console.log(errorMessasge, 'details')
     if (!video) {
         return (
             <div className={classes.root}>
                 <Alert severity="info" style={{ fontSize: "20px" }}>
                     <AlertTitle style={{ fontSize: "25px" }}>Page Under Devlopment</AlertTitle>
-                    {`There may be some server error please Try Again Later ${errorMessasge}`}
+                    {`If your search not appears please try again later ,There may be some server error please Try Again Later ${errorMessasge}`}
                 </Alert>
             </div>
         )
@@ -35,8 +34,6 @@ const VideoDetail = ({ video, errorMessasge }) => {
 
     return (
         <div>
-
-    
         <iframe  style={{ height: '400px',width:'100%' }} src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <Grid style={{ height: '100%' }}>
             <div style={{ padding: '5px', fontSize: '25px' }}>
